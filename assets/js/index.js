@@ -47,7 +47,7 @@ function login()
             var data = JSON.parse(this.responseText)
             localStorage.setItem("JWT_Token", "JWT " + data.token)
             localStorage.setItem("user",JSON.stringify(data.user))
-            window.location.replace('index.html')
+            window.location.replace('dashboard.html')
         }
         else{
             alert('Invalid login credentials')
@@ -75,7 +75,7 @@ function dispcase()
     console.log(data)
     var jwt = localStorage.getItem('JWT_Token')
     var xh = new XMLHttpRequest();
-    xh.open("POST", "http://localhost:3000/adv/details", true)
+    xh.open("POST", "https://case-manger.herokuapp.com/adv/details", true)
     xh.setRequestHeader('Content-Type', 'application/json')
     xh.setRequestHeader('Authorization', jwt)
     xh.send(JSON.stringify(data))
@@ -118,7 +118,7 @@ function details()
     console.log(data)
     var jwt = localStorage.getItem('JWT_Token')
     var xh = new XMLHttpRequest();
-    xh.open("POST", "http://localhost:3000/adv/moredetails", true)
+    xh.open("POST", "https://case-manger.herokuapp.com/adv/moredetails", true)
     xh.setRequestHeader('Content-Type', 'application/json')
     xh.setRequestHeader('Authorization', jwt)
     xh.send(JSON.stringify(data))
@@ -166,7 +166,7 @@ function details()
                         <i class="fa fa-plus"></i> Document ${j+1}                      
                     </div>
                     <div id="docd${i+1}-${j+1}" class="card-body collapse" aria-labelledby="docs${i+1}-${j+1}" data-parent="#docs${i+1}">
-                    <a href="http://localhost:3000/adv/get/upload?cno=${data.user.case_no}&dno=${data.user.date[i]._id}&updno=${data.user.date[i].files[j]._id}" download target="_blank">
+                    <a href="https://case-manger.herokuapp.com/adv/get/upload?cno=${data.user.case_no}&dno=${data.user.date[i]._id}&updno=${data.user.date[i].files[j]._id}" download target="_blank">
                     View and download document</a>
                     </div>
                 </div>`)
@@ -206,10 +206,11 @@ function middle(date_id)
 
 function count(phno)
 {
+    console.log(phno)
     var jwt = localStorage.getItem('JWT_Token')
     console.log(jwt)
     var xh = new XMLHttpRequest();
-    xh.open("GET", `http://localhost:3000/client/count?phone=${phno}`, true)
+    xh.open("GET", `https://case-manger.herokuapp.com/client/count?phone=${phno}`, true)
     xh.setRequestHeader('Content-Type', 'application/json')
     xh.setRequestHeader('Authorization', jwt)
     xh.send()
@@ -232,5 +233,34 @@ function logout()
 {
     localStorage.removeItem('user')
     localStorage.removeItem('JWT_Token')
-    window.location.replace('login.html')
+    window.location.replace('index.html')
+}
+
+function check()
+{
+    var jwt=localStorage.getItem('JWT_Token')
+    if(!jwt)
+    {
+        
+        window.location.replace('login.html')
+
+    }
+}
+
+function homecheck()
+{
+    var jwt=localStorage.getItem('JWT_Token')
+    if(!jwt)
+    {
+        $('#homepg').append(`<div class="col"><a href="signup.html">Signup</a></div>
+        <div class="col"><a href="login.html">Login</a></div>`)
+
+    }
+    else{
+        $('#homepg').append(`<div class="col"><a href="dashboard.html">My Dashboard</a></div>
+        <div class="col">
+        <a style="cursor: pointer; color: white;" onclick="logout()">Logout</a>
+</div>`)
+
+    }
 }
