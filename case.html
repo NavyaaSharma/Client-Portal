@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <!-- Title -->
+        <title>Case Details</title>
+        <!-- Linked Assets -->
+        <link rel="icon" href="assets/img/favicon.png" type="image/png">
+        <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" type="image/png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" 
+            defer>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            defer>
+        <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">      -->
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body onload="details()">
+        <header>
+            <nav class="navbar navbar-dark text-center">
+                <div class="col-sm-3 col-md-2 px-0">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/law.svg" alt="">
+                    </a>
+                </div>
+        
+                <div class="col-md-5 mt-2">
+                    <div class="row">
+                        <div class="col"><a href="index.html">My Dashboard</a></div>
+                        <!-- <div class="col"><a href="add.html">Add new case</a></div> -->
+                        <div class="col">
+                            <span id="c1" class="d-none">
+                                <a href="login.html">Login</a><br><a href="signup.html">Sign Up</a>
+                            </span>
+                            <span id="c2">
+                                <a style="cursor: pointer; color: white;" onclick="logout()">Logout</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section class="justify-content-center">
+            <div class="card">
+                <h2 class="card-title row">
+                    <div class="col-sm-5 shadow-text">Case Details</div>
+                    
+                </h2>
+                <h5>Name: <span id="name"></span></h5>
+                <h5>Party: <span id="party"></span></h5>
+                <h5>Description: <span id="desc"></span></h5>
+                <h5>Judge Name: <span id="judge"></span></h5>
+                <h5>Case Number: <span id="cno"></span></h5>
+                
+                <h2 class="card-title row mt-3">
+                    <div class="col-6 col-sm-4 shadow-text">Dates</div>
+                
+                </h2>
+                <div class="accordion" id="dates">
+                    
+                </div>
+            </div>            
+        </section>
+
+        <div class="modal fade" id="editCase" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Case details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times text-white"></i>
+                        </button>
+                    </div>
+                    <form action="">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input class="form-control mt-1" type="text" placeholder="Name" id="ename">
+                                <input class="form-control mt-1" type="text" placeholder="Party-opponent 1" id="ep1">
+                                <input class="form-control mt-1" type="text" placeholder="Party-opponent 1" id="ep2">
+                                <input class="form-control mt-1" type="text" placeholder="Description" id="edesc">
+                                <input class="form-control mt-1" type="text" placeholder="Judge Name" id="ejudge">
+                                <input type="text" hidden id="ecno">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close without changing</button>
+                            <button type="button" class="btn btn-outline-light" onclick="editCase()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="addDate" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Date</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times text-white"></i>
+                        </button>
+                    </div>
+                    <form action="">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input class="form-control mt-1" type="text" placeholder="Case Hearing Date" id="adate">
+                                <input class="form-control mt-1" type="text" placeholder="Time" id="atime">
+                                <input class="form-control mt-1" type="text" placeholder="Details" id="adetails">
+                                <input class="form-control mt-1" type="text" placeholder="Message" id="amsg">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close without changing</button>
+                            <button type="button" class="btn btn-outline-light" onclick="addDate()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="editDate" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Date details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times text-white"></i>
+                        </button>
+                    </div>
+                    <form action="">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input class="form-control mt-1" type="text" placeholder="Case Date" id="ucd">
+                                <input class="form-control mt-1" type="text" placeholder="Time" id="utime">
+                                <input class="form-control mt-1" type="text" placeholder="details" id="udet">
+                                <input class="form-control mt-1" type="text" placeholder="Message For Client" id="umsg">
+                                <p hidden id="did"></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close without changing</button>
+                            <button type="button" class="btn btn-outline-light" onclick="editDate()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/js/index.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

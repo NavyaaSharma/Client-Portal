@@ -1,0 +1,121 @@
+html, body{
+    margin: 0 0;
+    padding: 0 0;
+    overflow-x: hidden;
+    background-color: #222;
+}
+#anim{
+    background: linear-gradient(-45deg, #000, #111,#333);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+.shadow-text{
+    text-shadow: 0px 0px 10px #000;
+}
+
+.navbar{
+    background-color: #1d1d1d;
+}
+
+.navbar-brand img{
+    width: 70px;
+}
+
+section{
+    padding: 1rem 2rem;
+}
+
+.navbar .col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar a{
+    text-decoration: none !important;
+    color: white;
+    font-weight: 600;
+}
+
+.card{
+    text-decoration: none;
+    padding: 1rem 1rem;
+    color: white;
+    background-color: #353535;
+}
+
+a.card:hover{
+    text-decoration: none;
+    color: #eeeeee;
+    box-shadow: 0px 0px 8px white;
+}
+
+.card .btn{
+    width: 100%;
+    max-width: 200px !important;
+}
+
+.loginbox{
+    margin: 5vh 1rem;
+    padding: 1rem 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    max-width: 500px;
+    height: 80vh;
+    
+    box-shadow: 0px 0px 5px white;
+}
+
+.loginbox form{
+    width: 100%;
+    max-width: 450px;
+}
+
+@media only screen and (max-width: 576px){
+    section{
+        padding: 0 0;
+    }
+    .navbar-brand img{
+        width: 40px;
+    }
+    .navbar a{
+        font-size: 0.8rem;
+    }
+    /* .card .btn{
+        max-width: 300px !important;
+    }  */
+    .loginbox{
+        width: 100%;
+        height: 100vh;
+        margin: 0vh 0rem;
+    }
+    .loginbox form{
+        padding: 0.3rem 0.3rem;
+    }
+}
+
+.modal input.form-control{
+    background-color: #464c52 !important;
+    color: white !important;
+}
