@@ -14,28 +14,39 @@
             defer> -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     </head>
     <body id="anim">
         <section class="justify-content-center row">
             <div class="loginbox" data-aos="fade-up">
-                <form action="#">
+                <div class="form">
                     <h1>Sign in</h1>
                     <div class="form-group">
                         <input class="form-control mt-3" type="text" placeholder="Your registered phone number" id="phno" required>
-                        <input class="form-control mt-3" type="password" placeholder="Password" id="pass" required>
-                        <button class="btn btn-dark mt-3 form-control" onclick="login()">Sign In</button>
+                    
                     </div>
+                    <div class="form-group">
+                        <input class="form-control mt-3" type="password" placeholder="Password" id="pass" required>
+                        
+                    </div>
+                    <button class="btn btn-dark mt-3 form-control" type="submit" id="formsubmit">Sign In</button>
                     <div class="form-group">
                         <a href="signup.html">Don't have an account yet?</a>
                     </div>
-                    
-                </form>
+                </div> 
+                
             </div>
         </section>
         <script src="./assets/js/index.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             AOS.init();
+        </script>
+        <script>
+            $('#formsubmit').on('click',function(e){
+                e.preventDefault()
+                validate2()
+            })
         </script>
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,3 +1,26 @@
+function validate1()
+{
+    if(document.getElementById('uname').value && document.getElementById('email').value && document.getElementById('pass').value && document.getElementById('phno').value)
+    {
+        register()
+    }
+    else
+    {
+        alert('Please fill complete details to register!')
+    }
+}
+
+function validate2()
+{
+    if(document.getElementById('pass').value && document.getElementById('phno').value)
+    {
+        login()
+    }
+    else
+    {
+        alert('Please fill complete details to login!')
+    }
+}
 
 function register()
 {
