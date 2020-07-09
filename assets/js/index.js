@@ -27,7 +27,6 @@ function register()
     var data=
     {
     "name":document.getElementById('uname').value,
-	"email":document.getElementById('email').value,
     "password":document.getElementById('pass').value,
     "phone":document.getElementById('phno').value
     }
