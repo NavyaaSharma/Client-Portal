@@ -3,7 +3,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <!-- Title -->
-        <title>Add Case</title>
+        <title>Forgot Password</title>
         <!-- Linked Assets -->
         <link rel="icon" href="assets/img/favicon.png" type="image/png">
         <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" type="image/png">
@@ -18,19 +18,19 @@
     <body id="anim">
         <section class="justify-content-center row">
             <div class="loginbox" data-aos="fade-up">
-                <form method="POST">
-                    <h1>Add Case</h1>
+                <div class="form">
+                    <h1>Create a new password</h1>
                     <div class="form-group">
-                        <input class="form-control mt-3" type="text" placeholder="Case Numner" id="cno" required>
-                        <input class="form-control mt-3" type="text" placeholder="Case Name" id="name" required>
-                        <input class="form-control mt-3" type="text" placeholder="Case Description" id="desc" required>
-                        <input class="form-control mt-3" type="text" placeholder="Client's Phone Number" id="phone" required>
-                        <input class="form-control mt-3" type="text" placeholder="Judge Name" id="judge" required>
-                        <input class="form-control mt-3" type="text" placeholder="Name Of opponrnt 1" id="p1" required>
-                        <input class="form-control mt-3" type="text" placeholder="Name Of opponrnt 2" id="p2" required>
-                        <button class="btn btn-dark mt-3 form-control" onclick="addCase()">Add Case</button>
+                        <input class="form-control mt-3" type="text" placeholder="Registered phone number" id="phone" required>
+                        <input class="form-control mt-3" type="password" placeholder="New Password" id="pass" required>
+                        <button class="btn btn-dark mt-3 form-control" onclick="validate3()">Create new password</button>
+                        <a href="index.html"><button class="btn btn-info mt-3 form-control">Go Back</button></a>
                     </div>
-                </form>
+                    <div class="form-group">
+                        <a href="login.html">Already have an account? Sign In</a>
+                    </div>
+                    
+                </div>
             </div>
         </section>
         <script src="./assets/js/index.js"></script>
@@ -38,8 +38,8 @@
         <script>
             AOS.init();
         </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
     </body>
 </html>

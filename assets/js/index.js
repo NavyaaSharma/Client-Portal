@@ -22,6 +22,46 @@ function validate2()
     }
 }
 
+function validate3()
+{
+    if(document.getElementById('pass').value && document.getElementById('phone').value)
+    {
+        forgot()
+    }
+    else
+    {
+        alert('Please fill complete details!')
+    }
+}
+
+function forgot()
+{
+    var data=
+    {
+	"phone":document.getElementById('phone').value,
+	"password":document.getElementById('pass').value
+    }
+    var xh = new XMLHttpRequest();
+    xh.open("POST", "https://case-manger.herokuapp.com/client/forgotpassword", true)
+    xh.setRequestHeader('Content-Type', 'application/json')
+    xh.send(JSON.stringify(data))
+    xh.onload=function(){
+        if(this.status==201)
+        {
+            alert('Password updated!')
+            window.location.replace('login.html')
+        }
+        else if(this.status==401){
+            alert('Phone number is not registered! Make sure you enter the correct phone nummber.')
+        }
+        else
+        {
+            alert('Couldnot update password. Try again!')
+            window.location.reload()
+        }
+}
+}
+
 function register()
 {
     var data=
@@ -115,6 +155,11 @@ function dispcase()
             </a>`)
             }
         }
+        else if(this.status==403)
+        {
+            alert('Session expired! Please Login to continue')
+            window.location.replace('login.html')
+        }
         else if(this.status==404)
         {
             $('#dispcase').append(`<a href="" class="card col-10 col-md-6 m-1">
@@ -171,6 +216,7 @@ function details()
                     <div id="data${i+1}" class="card-body collapse" aria-labelledby="date${i+1}" data-parent="#dates">
                        
                         <h5>Time: <span id="time${data.user.date[i]._id}">${data.user.date[i].time}</span></h5>
+                        <h5>Venue: <span id="venue${data.user.date[i]._id}">${data.user.date[i].venue}</span></h5>
                         <h5>Details: <span id="det${data.user.date[i]._id}">${data.user.date[i].details}</span></h5>
                         <h5>Message For Client: <span id="msg${data.user.date[i]._id}">${data.user.date[i].msg}</span></h5>
                         <h5>Important Documents:</h5> 
@@ -201,6 +247,11 @@ function details()
                         <i class="fa fa-plus"></i> No date history found                      
                     </div>`)
             }
+        }
+        else if(this.status==403)
+        {
+            alert('Session expired! Please Login to continue')
+            window.location.replace('login.html')
         }
         else if(this.status==404)
         {
@@ -275,11 +326,13 @@ function homecheck()
     if(!jwt)
     {
         $('#homepg').append(`<div class="col"><a href="signup.html">Signup</a></div>
-        <div class="col"><a href="login.html">Login</a></div>`)
+        <div class="col"><a href="login.html">Login</a></div>
+        <div class="col"><a href="#contact">Contact Me</a></div>`)
 
     }
     else{
         $('#homepg').append(`<div class="col"><a href="dashboard.html">My Dashboard</a></div>
+        <div class="col"><a href="#contact">Contact Me</a></div>
         <div class="col">
         <a style="cursor: pointer; color: white;" onclick="logout()">Logout</a>
 </div>`)
