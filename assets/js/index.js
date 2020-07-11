@@ -157,6 +157,8 @@ function dispcase()
         }
         else if(this.status==403)
         {
+            localStorage.removeItem('user')
+            localStorage.removeItem('JWT_Token')
             alert('Session expired! Please Login to continue')
             window.location.replace('login.html')
         }
@@ -250,6 +252,8 @@ function details()
         }
         else if(this.status==403)
         {
+            localStorage.removeItem('user')
+            localStorage.removeItem('JWT_Token')
             alert('Session expired! Please Login to continue')
             window.location.replace('login.html')
         }
@@ -328,14 +332,18 @@ function homecheck()
         $('#homepg').append(`<div class="col"><a href="signup.html">Create Password</a></div>
         <div class="col"><a href="login.html">Login</a></div>
         <div class="col"><a href="#contact">Contact Me</a></div>`)
+        $('#inst').append(`<li>Register to the portal with our email and password <b style="color:33FFF4">(Goto -> Create Password)</b></li>
+        <li>Once you register, you can proceed to login to your dashboard <b style="color:33FFF4">(Goto -> Login)</b></li>`)
 
     }
     else{
         $('#homepg').append(`<div class="col"><a href="dashboard.html">My Dashboard</a></div>
         <div class="col"><a href="#contact">Contact Me</a></div>
         <div class="col">
-        <a style="cursor: pointer; color: white;" onclick="logout()">Logout</a>
-</div>`)
+        <a style="cursor: pointer; color: white;" onclick="logout()">Logout</a></div>`)
+        $('#inst').append(`<li>You have logged In now, you can goto you dashboard <b style="color:33FFF4">(Goto -> My Dashboard)</b></li>
+        <li>In your dashboard you can view all your ongoing cases as per the registered mobile number</li>
+        <li>View your case details,upcoming dates and important documents and information</li>`)
 
     }
 }
