@@ -325,7 +325,7 @@ function homecheck()
     var jwt=localStorage.getItem('JWT_Token')
     if(!jwt)
     {
-        $('#homepg').append(`<div class="col"><a href="signup.html">Signup</a></div>
+        $('#homepg').append(`<div class="col"><a href="signup.html">Create Password</a></div>
         <div class="col"><a href="login.html">Login</a></div>
         <div class="col"><a href="#contact">Contact Me</a></div>`)
 
