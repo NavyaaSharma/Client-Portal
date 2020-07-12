@@ -40,7 +40,9 @@
             <div class="card">
                 <h2 class="card-title row">
                     <div class="col-sm-5 shadow-text">Case Details</div>
-                    
+                    <div class="justify-content-center col-sm-7 d-flex">
+                        <a href="javascript:void(0);" onclick="printPageArea('printableArea')"><button class="btn btn-dark m-2">Print Case Details</button></a>
+                    </div>
                 </h2>
                 <h5>Name: <span id="name"></span></h5>
                 <h5>Party: <span id="party"></span></h5>
@@ -139,9 +141,25 @@
                 </div>
             </div>
         </div>
+        <div id="printableArea" hidden>
+            <h2>
+                Case details :
+            </h2>
+        </div>
         <script src="./assets/js/index.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            function printPageArea(areaID){
+            var printContent = document.getElementById(areaID);
+            var WinPrint = window.open('', '', 'width=900,height=650');
+            WinPrint.document.write(printContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
+}
+        </script>
     </body>
 </html>

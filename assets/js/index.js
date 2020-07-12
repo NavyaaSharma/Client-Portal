@@ -147,12 +147,39 @@ function dispcase()
         {
             var data = JSON.parse(this.responseText)
             console.log(data)
+            $('#btnp').append(`<a href="javascript:void(0);" onclick="printPageArea('printableArea')">
+            <button class="btn btn-dark m-2 float-right">Print All Cases</button></a>`)
             for(var i=0;i<data.payload.length;i++)
             {
                 $('#dispcase').append(`<a href="case.html?id=${data.payload[i].case_no}" class="card col-10 col-md-6 m-1">
                 <h4 class="card-title">Case Name: <span>${data.payload[i].name}</span></h4>
                 <h6>${data.payload[i].party.party1} v/s ${data.payload[i].party.party2}</h6>
             </a>`)
+            var csdate
+            if(data.payload[i].date.length==0)
+            {
+                csdate='NA'
+                $('#listp').append(`<li>
+            <h3>${data.payload[i].party.party1} v/s ${data.payload[i].party.party2}</h3>
+            <div>
+                <p><b>Case Number</b> : ${data.payload[i].case_no}</p>
+                <p><b>Case Description</b> : ${data.payload[i].desc}</p>
+                <p><b>Next Case Hearing Date</b> : ${csdate}</p>
+            </div>
+        </li>`)
+            }
+            else
+            {
+                csdate=data.payload[i].date.length-1
+                $('#listp').append(`<li>
+            <h3>${data.payload[i].party.party1} v/s ${data.payload[i].party.party2}</h3>
+            <div>
+                <p><b>Case Number</b> : ${data.payload[i].case_no}</p>
+                <p><b>Case Description</b> : ${data.payload[i].desc}</p>
+                <p><b>Next Case Hearing Date</b> : ${data.payload[i].date[csdate].date}</p>
+            </div>
+        </li>`)
+            }
             }
         }
         else if(this.status==403)
@@ -207,6 +234,30 @@ function details()
             document.getElementById('edesc').value=data.user.desc
             document.getElementById('ejudge').value=data.user.judge
             document.getElementById('cno').innerHTML=data.user.case_no
+            var csdate
+            if(data.user.date.length==0)
+            {
+                csdate='NA'
+                $('#printableArea').append(`
+            <h3>${data.user.party.party1} v/s ${data.user.party.party2}</h3>
+            <div>
+                <p><b>Case Number</b> : ${data.user.case_no}</p>
+                <p><b>Case Description</b> : ${data.user.desc}</p>
+                <p><b>Next Case Hearing Date</b> : ${csdate}</p>
+            </div>`)
+            }
+            else
+            {
+                csdate=data.user.date.length-1
+                $('#printableArea').append(`
+            <h3>${data.user.party.party1} v/s ${data.user.party.party2}</h3>
+            <div>
+                <p><b>Case Number</b> : ${data.user.case_no}</p>
+                <p><b>Case Description</b> : ${data.user.desc}</p>
+                <p><b>Next Case Hearing Date</b> : ${data.user.date[csdate].date}</p>
+            </div>
+        `)
+            }
             if(data.user.date.length!=0)
             {
                 for(var i=0;i<data.user.date.length;i++)
