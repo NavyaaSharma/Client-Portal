@@ -383,7 +383,7 @@ function homecheck()
         $('#homepg').append(`<div class="col"><a href="signup.html">Create Password</a></div>
         <div class="col"><a href="login.html">Login</a></div>
         <div class="col"><a href="#contact">Contact Me</a></div>`)
-        $('#inst').append(`<li>Register to the portal with our email and password <b style="color:33FFF4">(Goto -> Create Password)</b></li>
+        $('#inst').append(`<li>Register to the portal with your registered phone number and password <b style="color:33FFF4">(Goto -> Create Password)</b></li>
         <li>Once you register, you can proceed to login to your dashboard <b style="color:33FFF4">(Goto -> Login)</b></li>`)
 
     }
