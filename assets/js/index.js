@@ -1,6 +1,6 @@
 function validate1()
 {
-    if(document.getElementById('uname').value && document.getElementById('email').value && document.getElementById('pass').value && document.getElementById('phno').value)
+    if(document.getElementById('uname').value && document.getElementById('pass').value && document.getElementById('phno').value)
     {
         register()
     }
